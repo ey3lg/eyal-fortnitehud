@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+      rel="stylesheet"
+    />
+    <title>eyal HUD</title>
+  </head>
+  <body>
+    <div id="main-container">
+      <div class="hud" v-if="showAll">
+        <div class="armor-bar">
+          <div class="icon-container">
+            <img src="images/armor.png" alt="Armor" class="status-icon" />
+          </div>
+          <div class="bar-container">
+            <div class="bar-background"></div>
+            <div
+              class="bar-fill armor-fill"
+              :style="{width: armor + '%'}"
+            ></div>
+          </div>
+          <div class="value-text">{{formattedArmor}}</div>
+        </div>
+        <div class="health-bar">
+          <div class="icon-container">
+            <img src="images/health.png" alt="Health" class="status-icon" />
+          </div>
+          <div class="bar-container">
+            <div class="bar-background"></div>
+            <div
+              class="bar-fill health-fill"
+              :style="{width: health + '%'}"
+            ></div>
+            <div
+              class="damage-indicator"
+              v-if="showDamage"
+              :style="{left: health + '%', width: damageAmount + '%'}"
+            ></div>
+          </div>
+          <div class="value-text">{{formattedHealth}}</div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
