@@ -139,7 +139,8 @@ const app = createApp({
               if (args?.[0]) {
                 hudController.updateArmor(args[0].armor);
                 if (args[0].damage > 0) {
-                  // You can add armor damage visualization here if needed
+                  // damageSystem.show(args[0].damage);
+                  // You can add armor damage visualization here if needed (i tried to copy the fortnite hud soo i didnt added anything also except the health visualization 
                 }
               }
               break;
@@ -198,3 +199,4 @@ try {
 } catch (err) {
   console.error(err);
 }
+
