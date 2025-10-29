@@ -6,6 +6,8 @@ const CONFIG = {
   ARMOR_BOUNDS: { MIN: 0, MAX: 100 },
   EVENT_TYPES: {
     UPDATE_HUD: "UpdateHUD",
+    UPDATE_HEALTH: "updateHealth",
+    UPDATE_ARMOR: "updateArmor",
   },
 };
 
@@ -122,6 +124,24 @@ const app = createApp({
           switch (name) {
             case CONFIG.EVENT_TYPES.UPDATE_HUD:
               hudController.updateAll(args?.[0]);
+              break;
+
+            case CONFIG.EVENT_TYPES.UPDATE_HEALTH:
+              if (args?.[0]) {
+                hudController.updateHealth(args[0].health);
+                if (args[0].damage > 0) {
+                  damageSystem.show(args[0].damage);
+                }
+              }
+              break;
+
+            case CONFIG.EVENT_TYPES.UPDATE_ARMOR:
+              if (args?.[0]) {
+                hudController.updateArmor(args[0].armor);
+                if (args[0].damage > 0) {
+                  // You can add armor damage visualization here if needed
+                }
+              }
               break;
 
             default:
